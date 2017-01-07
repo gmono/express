@@ -168,11 +168,12 @@ int ExpressCore::readExpression(int &ptr, string &text, string signs)
             //例如 1+2+这样的表达式就会出现 12++这样的逆波兰式 这样就会出现取数错误
             try
             {
+                //a为后入栈 所以是后面的数
                 int a=nums.top();
                 nums.pop();
                 int b=nums.top();
                 nums.pop();
-                int sum=w.data.sym.func(a,b);
+                int sum=w.data.sym.func(b,a); //1-2则是 func(1,2) 栈中从栈顶开始为2 1
                 nums.push(sum);
             }
             catch(...)
