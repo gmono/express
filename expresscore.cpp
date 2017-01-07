@@ -64,7 +64,7 @@ ExpressCore::Word ExpressCore::readFunction(int &ptr, string &text)
     vector<int> pars;//参数表
     while(ptr<text.length())//这里保证其不会越界
     {
-        int p=readExpression(ptr,text,",)");//以逗号和反括号结尾 结尾时ptr指向逗号
+        int p=this->readExpression(ptr,text,",)");//以逗号和反括号结尾 结尾时ptr指向逗号
         pars.push_back(p);
         if(text[ptr]==',') continue;
         if(text[ptr]==')') break;//遇到反括号就跳出
@@ -204,16 +204,16 @@ bool ExpressCore::registSymbol(const string &name, int level, const SymbolFunc &
 
 void ExpressCore::registFunction(const string &name, ExpFunc func)
 {
-    bool isexist=exmap.find(name)!=exmap.end()? true:false;//如果存在就返回true
+//    bool isexist=exmap.find(name)!=exmap.end()? true:false;//如果存在就返回true
 //    if(isexist) exmap.erase(name);//擦除
     //由于无需释放，所以直接替换 应该没事
     this->exmap[name]=func;//允许替换
 }
 
-ExpressCore::Symbol::Symbol(int level, ExpressCore::SymbolFunc &func)
+ExpressCore::Symbol::Symbol(int level, const SymbolFunc &func)
 {
     this->level=level;
     this->func=func;
 }
 
-ExpressCore::istack::istack(){this->contptr=&this->c;}
+

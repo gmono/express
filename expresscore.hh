@@ -27,7 +27,7 @@ private:
     {
         //    string symsign="";//这是调试用的方便识别符号
         Symbol(){}
-        Symbol(int level,SymbolFunc &func);
+        Symbol(int level,const SymbolFunc &func);
         int level=0;//优先级0为最低级
         SymbolFunc func;
     };
@@ -45,7 +45,7 @@ private:
     struct istack:public stack<_Tp,_Sequence>
     {
         _Sequence *contptr;
-        istack();
+        istack(){this->contptr=&this->c;}
     };
     umap<string,Symbol *> symmap; //符号函数映射表 符号->func(a,b) 用于查询运算符的存在性和取得运算符函数 运算符不能为逗号和括号
     umap<string,ExpFunc> exmap;//表达式函数表
