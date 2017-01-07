@@ -3,8 +3,7 @@ CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.cpp \
-    expresscore.cpp
+SOURCES += main.cpp
 
 HEADERS += \
     expresscore.hh
