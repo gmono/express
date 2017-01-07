@@ -8,15 +8,17 @@
 #include <set>
 using namespace std;
 #define umap unordered_map
-
-
-
+template<class ValueType>
+ValueType genReadNumber(int &ptr,string &text);
 //表达式运算类
-template<typename ValueType>
+template<typename ValueType=int>
 class ExpressCore
 {
 public:
+    typedef function<ValueType(int &,string&)> ReadNumFunc;
+    //默认构造器只有特定的特化版本 目前只有对整数 （int longlong等)
     ExpressCore();
+    ExpressCore(ReadNumFunc);//正常情况下需要这个函数 除了一些特殊的外
 
     typedef function<ValueType(const vector<ValueType> &)> ExpFunc;//标准函数定义
     typedef function<ValueType(const ValueType,const ValueType)> SymbolFunc;//符号函数定义
@@ -53,13 +55,16 @@ private:
     umap<string,ExpFunc> exmap;//表达式函数表
 
     //原则 任何一个读取函数读取后 一切属于读取范围内的内容都被跳过
+
+//    friend class GenFuns<ValueType>;
     Word readNumber(int &ptr,string &text);
+    ReadNumFunc readNumberfun;
     Word readSymbol(int &ptr,string &text);
     Word readFunction(int &ptr,string &text);
 public:
     //这个函数会自动跳过空格 但是如果设置成空格结束 也可以
     //这个函数是计算函数 读取一个表达式返回一个值
-    int readExpression(int &ptr,string &text,string signs);
+    ValueType readExpression(int &ptr,string &text,string signs);
     //下面是注册函数
 
     //注册一个运算符
@@ -68,27 +73,89 @@ public:
     //注册一个函数
     void registFunction(const string &name,ExpFunc func);
 };
-template<class T>
-ExpressCore<T>::ExpressCore()
+template<>
+ExpressCore<int>::ExpressCore()
 {
+    this->readNumberfun=&genReadNumber<int>;
 }
+template<>
+ExpressCore<long long>::ExpressCore()
+{
+    this->readNumberfun=&genReadNumber<long long>;
+}
+template<>
+ExpressCore<long>::ExpressCore()
+{
+    this->readNumberfun=&genReadNumber<long>;
+}
+template<>
+ExpressCore<short>::ExpressCore()
+{
+    this->readNumberfun=&genReadNumber<short>;
+}
+template<>
+ExpressCore<double>::ExpressCore()
+{
+    this->readNumberfun=&genReadNumber<double>;
+}
+//unsigned 特化构造器
+template<>
+ExpressCore<unsigned int>::ExpressCore()
+{
+//    this->readNumberfun=[](int &ptr,string &text){return genReadNumber<int>(ptr,text);};
+    this->readNumberfun=&genReadNumber<int>;
+}
+template<>
+ExpressCore<unsigned long long>::ExpressCore()
+{
+    this->readNumberfun=&genReadNumber<long long>;
+}
+template<>
+ExpressCore<unsigned long>::ExpressCore()
+{
+    this->readNumberfun=&genReadNumber<long>;
+}
+template<>
+ExpressCore<unsigned short>::ExpressCore()
+{
+    this->readNumberfun=&genReadNumber<short>;
+}
+//以上为特化构造器
+
 template<class T>
-auto ExpressCore<T>::readNumber(int &ptr, string &text)->Word
+ExpressCore<T>::ExpressCore(ReadNumFunc rnfunc)
+{
+    //这是通用情况下 使用外部的数字读取器
+    this->readNumberfun=rnfunc;
+}
+
+//这个函数用于整数
+template<class T>
+auto genReadNumber(int &ptr,string &text)->T
 {
     //这里有个基本认识即string的end就是\0
-    int sum=0;
+    T sum=0;
     for(char c=text[ptr++];c<='9'&&c>='0';c=text[ptr++])
     {
         sum=sum*10+(c-'0');
     }
     ptr--;//调整 由于循环完时会让ptr++ 因此会在结束符后面一位 调整到前一位
+    return sum;
+}
+
+////////////////////////////
+
+template<class T>
+auto ExpressCore<T>::readNumber(int &ptr, string &text)->Word
+{
     Word ret;
     ret.type=WordType::Number;
-    ret.data.number=sum;
+    ret.data.number=this->readNumberfun(ptr,text); //从自定义数字解析器解析数字 得到valueType型
     return ret;
 }
+
 template<class T>
-/*ExpressCore<T>::Word */auto ExpressCore<T>::readSymbol(int &ptr, string &text)->Word
+auto ExpressCore<T>::readSymbol(int &ptr, string &text)->Word
 {
     //运算符 遇到任何字母或数字时停止
     string symbuf;
@@ -110,7 +177,6 @@ template<class T>
 template<class T>
 auto ExpressCore<T>::readFunction(int &ptr, string &text)->Word
 {
-    int readExpression(int &ptr,string &text,string signs);
     //函数遇到字母时进入函数读取模式
     string namebuf;//函数名存储
     for(char c=text[ptr++];isalnum(c);c=text[ptr++])
@@ -130,24 +196,24 @@ auto ExpressCore<T>::readFunction(int &ptr, string &text)->Word
     if(sptr==exmap.end()) throw "没有这个函数";
     ExpFunc fun=sptr->second;
     //读取参数表 参数表以逗号分割 每一个参数都是一个表达式
-    vector<int> pars;//参数表
+    vector<T> pars;//参数表
     while(ptr<text.length())//这里保证其不会越界
     {
-        int p=this->readExpression(ptr,text,",)");//以逗号和反括号结尾 结尾时ptr指向逗号
+        T p=this->readExpression(ptr,text,",)");//以逗号和反括号结尾 结尾时ptr指向逗号
         pars.push_back(p);
         if(text[ptr]==',') {ptr++;continue;}
         if(text[ptr]==')') {ptr++;break;}//遇到反括号就跳出
         else throw "内部错误！";//这里理应是上面两个字符 如果不是就是内部错误了
     }
     //调用函数得到结果
-    int num=fun(pars);
+    T num=fun(pars);
     Word ret;
     ret.type=WordType::Number;
     ret.data.number=num;
     return ret;
 }
 template<class T>
-int ExpressCore<T>::readExpression(int &ptr, string &text, string signs)
+auto ExpressCore<T>::readExpression(int &ptr, string &text, string signs)->T
 {
 
     //signs中的任意字符为结束标志 同时末尾自动结束
@@ -226,7 +292,7 @@ int ExpressCore<T>::readExpression(int &ptr, string &text, string signs)
     //构造完成
     deque<Word> &cont=*(stack2.contptr);//stack从低向高生长 因此直接zheng正序遍历
     //计算开始
-    stack<int> nums;//数字计算栈
+    stack<T> nums;//数字计算栈
     for(auto i=cont.begin();i!=cont.end();++i)
     {
         Word w=*i;
@@ -238,11 +304,11 @@ int ExpressCore<T>::readExpression(int &ptr, string &text, string signs)
             try
             {
                 //a为后入栈 所以是后面的数
-                int a=nums.top();
+                T a=nums.top();
                 nums.pop();
-                int b=nums.top();
+                T b=nums.top();
                 nums.pop();
-                int sum=w.data.sym.func(b,a); //1-2则是 func(1,2) 栈中从栈顶开始为2 1
+                T sum=w.data.sym.func(b,a); //1-2则是 func(1,2) 栈中从栈顶开始为2 1
                 nums.push(sum);
             }
             catch(...)
@@ -253,7 +319,7 @@ int ExpressCore<T>::readExpression(int &ptr, string &text, string signs)
         else throw "内部错误";//无故出现None型对象 内部错误
     }
     //得到结果
-    int ret=nums.top();
+    T ret=nums.top();
     return ret;
 }
 template<class T>
