@@ -1,6 +1,8 @@
 ﻿  express.cpp
-d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(280): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(259): note: 编译 类 模板 成员函数 "double ExpressCore<double>::readExpression(int &,std::string &,std::string)" 时
-  d:\document\visual studio 2017\projects\express\express\express.cpp(31): note: 参见对正在编译的函数 模板 实例化“double ExpressCore<double>::readExpression(int &,std::string &,std::string)”的引用
-  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(120): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
-d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(298): error C2660: “ExpressCore<double>::readFunction”: 函数不接受 2 个参数
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(233): error C2143: 语法错误: 缺少“;”(在“ExpressCore<ValueType>::readKeyExp”的前面)
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(233): error C2433: “Word”: 不允许在数据声明中使用“inline”
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(233): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(234): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(234): error C2511: “int ExpressCore<ValueType>::readKeyExp(int &,std::string &,std::string &)”:“ExpressCore<ValueType>”中没有找到重载的成员函数
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(234): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)
+d:\document\visual studio 2017\projects\express\express\express.cpp(6): error C2601: “main”: 本地函数定义是非法的
