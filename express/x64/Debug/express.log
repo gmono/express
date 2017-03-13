@@ -1,7 +1,6 @@
 ﻿  express.cpp
-d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(272): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(251): note: 编译 类 模板 成员函数 "double ExpressCore<double>::readExpression(int &,std::string &,std::string)" 时
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(280): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(259): note: 编译 类 模板 成员函数 "double ExpressCore<double>::readExpression(int &,std::string &,std::string)" 时
   d:\document\visual studio 2017\projects\express\express\express.cpp(31): note: 参见对正在编译的函数 模板 实例化“double ExpressCore<double>::readExpression(int &,std::string &,std::string)”的引用
-  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(114): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
-  express.vcxproj -> d:\document\visual studio 2017\Projects\express\x64\Debug\express.exe
-  express.vcxproj -> d:\document\visual studio 2017\Projects\express\x64\Debug\express.pdb (Partial PDB)
+  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(120): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(298): error C2660: “ExpressCore<double>::readFunction”: 函数不接受 2 个参数
