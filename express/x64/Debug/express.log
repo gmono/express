@@ -1,7 +1,7 @@
 ﻿  express.cpp
-d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(342): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(322): note: 编译 类 模板 成员函数 "double ExpressCore<double>::readExpression(int &,std::string &,std::string)" 时
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(303): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(283): note: 编译 类 模板 成员函数 "double ExpressCore<double>::readExpression(int &,std::string &,std::string)" 时
   d:\document\visual studio 2017\projects\express\express\express.cpp(31): note: 参见对正在编译的函数 模板 实例化“double ExpressCore<double>::readExpression(int &,std::string &,std::string)”的引用
-  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(130): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
+  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(114): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
   express.vcxproj -> d:\document\visual studio 2017\Projects\express\x64\Debug\express.exe
   express.vcxproj -> d:\document\visual studio 2017\Projects\express\x64\Debug\express.pdb (Partial PDB)
