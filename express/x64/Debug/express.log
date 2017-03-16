@@ -1,9 +1,9 @@
 ﻿  express.cpp
 d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(18): warning C4348: “ExpressCore”: 重定义默认参数 : 参数 1
   d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(20): note: 参见“ExpressCore”的声明
-d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(353): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(333): note: 编译 类 模板 成员函数 "double ExpressCore<double>::RunExpression(int &,std::string &,const std::string &)" 时
+d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(364): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(344): note: 编译 类 模板 成员函数 "double ExpressCore<double>::RunExpression(int &,std::string &,const std::string &)" 时
   d:\document\visual studio 2017\projects\express\express\express.cpp(44): note: 参见对正在编译的函数 模板 实例化“double ExpressCore<double>::RunExpression(int &,std::string &,const std::string &)”的引用
-  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(127): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
+  d:\document\visual studio 2017\projects\express\express_core\expresscore.hh(129): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
   express.vcxproj -> d:\document\visual studio 2017\Projects\express\x64\Debug\express.exe
   express.vcxproj -> d:\document\visual studio 2017\Projects\express\x64\Debug\express.pdb (Partial PDB)
