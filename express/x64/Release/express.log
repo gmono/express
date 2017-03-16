@@ -1,12 +1,13 @@
-﻿  stdafx.cpp
-  express.cpp
+﻿  express.cpp
 d:\document\visual studio 2017\projects\express\express\../express_core/expresscore.hh(18): warning C4348: “ExpressCore”: 重定义默认参数 : 参数 1
   d:\document\visual studio 2017\projects\express\express\../express_core/expresscore.hh(20): note: 参见“ExpressCore”的声明
-d:\document\visual studio 2017\projects\express\express\../express_core/expresscore.hh(329): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-  d:\document\visual studio 2017\projects\express\express\../express_core/expresscore.hh(309): note: 编译 类 模板 成员函数 "double ExpressCore<double>::readExpression(int &,std::string &,std::string)" 时
-  express.cpp(63): note: 参见对正在编译的函数 模板 实例化“double ExpressCore<double>::readExpression(int &,std::string &,std::string)”的引用
-  d:\document\visual studio 2017\projects\express\express\../express_core/expresscore.hh(120): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
+d:\document\visual studio 2017\projects\express\express\../express_core/expresscore.hh(349): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  d:\document\visual studio 2017\projects\express\express\../express_core/expresscore.hh(329): note: 编译 类 模板 成员函数 "double ExpressCore<double>::readExpression(int &,std::string &,std::string)" 时
+  express.cpp(78): note: 参见对正在编译的函数 模板 实例化“double ExpressCore<double>::readExpression(int &,std::string &,std::string)”的引用
+  d:\document\visual studio 2017\projects\express\express\../express_core/expresscore.hh(122): note: 参见对正在编译的 类 模板 实例化 "ExpressCore<double>" 的引用
   正在生成代码
-  All 2129 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  19 of 2246 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    4 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   express.vcxproj -> d:\document\visual studio 2017\Projects\express\x64\Release\express.exe
