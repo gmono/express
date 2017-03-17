@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "express", "express\express.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "express_core", "express_core\express_core.vcxproj", "{FFBD6F7D-B1C3-4850-BD8F-FAFF7DD04F98}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LanguageLib", "LanguageLib\LanguageLib.vcxproj", "{3B09928B-CD16-4B82-88E1-794AC94FD289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{FFBD6F7D-B1C3-4850-BD8F-FAFF7DD04F98}.Release|x64.Build.0 = Release|x64
 		{FFBD6F7D-B1C3-4850-BD8F-FAFF7DD04F98}.Release|x86.ActiveCfg = Release|Win32
 		{FFBD6F7D-B1C3-4850-BD8F-FAFF7DD04F98}.Release|x86.Build.0 = Release|Win32
+		{3B09928B-CD16-4B82-88E1-794AC94FD289}.Debug|x64.ActiveCfg = Debug|x64
+		{3B09928B-CD16-4B82-88E1-794AC94FD289}.Debug|x64.Build.0 = Debug|x64
+		{3B09928B-CD16-4B82-88E1-794AC94FD289}.Debug|x86.ActiveCfg = Debug|Win32
+		{3B09928B-CD16-4B82-88E1-794AC94FD289}.Debug|x86.Build.0 = Debug|Win32
+		{3B09928B-CD16-4B82-88E1-794AC94FD289}.Release|x64.ActiveCfg = Release|x64
+		{3B09928B-CD16-4B82-88E1-794AC94FD289}.Release|x64.Build.0 = Release|x64
+		{3B09928B-CD16-4B82-88E1-794AC94FD289}.Release|x86.ActiveCfg = Release|Win32
+		{3B09928B-CD16-4B82-88E1-794AC94FD289}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
