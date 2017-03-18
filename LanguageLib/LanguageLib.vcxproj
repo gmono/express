@@ -128,10 +128,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LanguageCore.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectFactory.h" />
+    <ClInclude Include="ObjectPool.h" />
+    <ClInclude Include="Refence.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjectFactory.cpp" />
+    <ClCompile Include="ObjectPool.cpp" />
+    <ClCompile Include="Refence.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

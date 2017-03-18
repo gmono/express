@@ -27,9 +27,33 @@
     <ClInclude Include="LanguageCore.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectPool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Refence.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectPool.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Refence.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
